@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bladymed | Clínica de Estética</title>
+    <link rel="icon" href="https://i.ibb.co/6JsrQLgf/Bladymed-Logo-miniatura.png">
+
+    <style>
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #fdeff4;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            background-image: url('https://i.ibb.co/hJTJ5jyC/Logotipo-Bladymed.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 40%;
+            opacity: 0.08;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        main {
+            margin-top: 120px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h2 {
+            background-color: #fbd6e2;
+            color: #d63d6c;
+            padding: 0.8rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 700px;
+            margin: 2rem auto;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        p, ul, li {
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto 1.2rem auto;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #f9d7e2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 2rem;
+        }
+
+        .navbar .logo img {
+            width: 100px;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 0;
+            padding: 0;
+            flex-wrap: nowrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #272524;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.4rem 0.6rem;
+            border-radius: 8px;
+            background-color: #fce4ec;
+            border: 1px solid #f8c8d8;
+            transition: background 0.3s ease, color 0.3s ease;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            background-color: #e75480;
+            color: #fff;
+        }
+
+        .tabela-tratamentos {
+            width: 90%;
+            max-width: 900px;
+            margin: 2rem auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .tabela-tratamentos thead {
+            background-color: #f9d7e2;
+        }
+
+        .tabela-tratamentos th,
+        .tabela-tratamentos td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #f3e0e6;
+        }
+
+        .tabela-tratamentos th {
+            color: #e75480;
+        }
+
+        .tabela-tratamentos tr:hover {
+            background-color: #fff5f7;
+        }
+
+        form {
+            width: 90%;
+            max-width: 600px;
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        input,
+        textarea {
+            padding: 0.8rem;
+            border: 1px solid #f4c2d1;
+            border-radius: 8px;
+            font-family: inherit;
+            text-align: center;
+        }
+
+        button {
+            background-color: #e75480;
+            color: #fff;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #d63d6c;
+        }
+
+        .localizacao {
+            background-color: #fff5f7;
+            padding: 2rem 0;
+        }
+
+        .localizacao iframe {
+            border-radius: 10px;
+            width: 70%;
+            max-width: 600px;
+            height: 300px;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: #f9d7e2;
+            color: #555;
+            text-align: left;
+            padding: 1rem 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+        }
+
+        .logo-fixa {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: 50px;
+            height: auto;
+            z-index: 1100;
+        }
+
+        .logo-animada {
+            display: block;
+            margin: 30px auto;
+            width: 700px;
+            height: auto;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .logo-animada:hover {
+            transform: scale(1.1) translateY(-8px);
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            height: 420px;
+        }
+
+        .carousel-slide {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #fff;
+            opacity: 0;
+            transition: opacity 600ms ease-in-out;
+            z-index: 1;
+            display: block;
+        }
+
+        .carousel-slide img.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #f798a8d9;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-weight: bold;
+            z-index: 10;
+            transition: transform .12s ease, background .15s ease;
+        }
+
+        .carousel-btn:hover {
+            transform: translateY(-50%) scale(1.05);
+            background-color: rgba(255,160,180,1);
+        }
+
+        .prev-btn {
+            left: 12px;
+        }
+
+        .next-btn {
+            right: 12px;
+        }
+
+        @media (max-width: 768px) {
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            footer {
+                text-align: center;
+            }
+
+            .carousel-container {
+                height: 260px;
+            }
+
+            .logo-animada {
+                width: 90%;
+                max-width: 420px;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <a href="#sobre">Quem somos?</a>
+                <a href="#missao">Missão e Valores</a>
+                <a href="#tratamentos">Tratamentos</a>
+                <a href="#equipe">Equipe Técnica</a>
+                <a href="#estrutura">Estrutura Física</a>
+                <a href="#qualidade">Qualidade e Segurança</a>
+                <a href="#contato">Agende sua Consulta</a>
+            </ul>
+        </nav>
+    </header>
+
+    <img src="https://i.ibb.co/hJTJ5jyC/Logotipo-Bladymed.png"
+         alt="Logotipo-Bladymed"
+         class="logo-fixa">
+
+    <main>
+
+        <h1>
+            <section>
+                <img src="https://i.ibb.co/C5Q2zz93/Bladymed-Logo-escrita.png"
+                     alt="Bladymed-Logo-escrita"
+                     class="logo-animada">
+                <br>
+            </section>
+        </h1>
+
+        <section id="sobre">
+            <h2>Quem Somos?</h2>
+            <p>A <strong>Bladymed</strong> é uma empresa especializada em tratamentos integrados voltados à saúde e qualidade de vida de pessoas que convivem com doenças crônicas e cicatrizes, com foco em pacientes portadores de fibromialgia, lúpus e outras doenças autoimunes.
+            A clínica oferece um atendimento humanizado e multidisciplinar, unindo tecnologia de ponta com cuidado emocional e social. Seu diferencial está na utilização de tecnologias de saúde avançadas, como laser terapêutico de baixa potência, microagulhamento biomédico e protocolos personalizados de infiltração articular guiados por imagem, que proporcionam maior precisão e recuperação otimizada.
+            Nosso atendimento vai além do tratamento físico: cuidamos do corpo, da mente e da autoestima, com protocolos exclusivos e acompanhamento contínuo.</p>
+        </section>
+
+        <section id="missao">
+            <h2>Missão e Valores</h2>
+            <p><strong>Missão:</strong> Nosso foco está no cuidado individualizado e humanizado de pacientes com fibromialgia, lúpus e outras condições que impactam não apenas o corpo, mas também o bem-estar emocional e social.</p>
+            <p><strong>Valores:</strong> Ética, inovação, empatia e comprometimento.</p>
+        </section>
+
+        <section id="tratamentos">
+            <h2>Nossos Tratamentos</h2>
+
+            <table class="tabela-tratamentos">
+                <thead>
+                    <tr>
+                        <th>Tratamento</th>
+                        <th>Descrição</th>
+                        <th>Valores</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Consulta com Reumatologista</td>
+                        <td>Avaliação detalhada, diagnóstico e prescrição personalizada.</td>
+                        <td>R$350,00</td>
+                    </tr>
+
+                    <tr>
+                        <td>Sessões de Infiltração Articular</td>
+                        <td>Tratamento médico especializado para dor e inflamações articulares.</td>
+                        <td>R$500,00</td>
+                    </tr>
+
+                    <tr>
+                        <td>Laser Terapêutico em Cicatrizes</td>
+                        <td>Procedimento que estimula regeneração tecidual e melhora da pele.</td>
+                        <td>R$200,00</td>
+                    </tr>
+
+                    <tr>
+                        <td>Microagulhamento para Cicatrizes</td>
+                        <td>Estimula colágeno e regeneração da pele com eficácia.</td>
+                        <td>R$400,00</td>
+                    </tr>
+
+                    <tr>
+                        <td>Reavaliações Periódicas</td>
+                        <td>Monitoramento e ajuste contínuo dos protocolos.</td>
+                        <td>R$200,00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="equipe">
+            <h2>Equipe Técnica</h2>
+            <p><strong>Maria Eduarda de Oliveira Ferreira</strong><br>
+                CRBM MG-86.345<br>
+                Responsável Técnica / Biomédica e Gerente Clínica<br>
+                Bacharel em Biomedicina pela UNA<br>
+                Pós-graduada em Biomedicina Estética e Laserterapia<br>
+                Especialista em terapias regenerativas e protocolos para pacientes com doenças autoimunes<br>
+                5 anos de experiência em clínicas especializadas em estética médica e reabilitação tecidual
+            </p>
+
+            <p><strong>Dr. Ricardo Menezes</strong><br>
+                CRM-MG 15234<br>
+                Médico Reumatologista<br>
+                Atuação em doenças autoimunes e dor crônica<br>
+                Experiência em infiltrações articulares e terapias integradas
+            </p>
+
+            <p><strong>Carlos Eduardo Ramos</strong><br>
+                Diretor Financeiro<br>
+                Responsável pela gestão administrativa e planejamento estratégico
+            </p>
+        </section>
+
+        <section id="estrutura">
+            <h2>Estrutura Física</h2>
+
+            <div class="carousel-container" aria-label="Carrossel de estrutura">
+                <div class="carousel-slide">
+                    <img src="https://i.ibb.co/qYdzYGST/Imagem-do-Whats-App-de-2025-11-12-s-19-48-35-8c7a98cc.jpg" alt="Estrutura 1" class="active">
+                    <img src="https://i.ibb.co/b5L4wJbQ/Imagem-do-Whats-App-de-2025-11-12-s-19-23-04-21789a0b.jpg" alt="Estrutura 2">
+                    <img src="https://i.ibb.co/TxD1mRbZ/Imagem-do-Whats-App-de-2025-11-12-s-19-23-04-4843412c.jpg" alt="Estrutura 3">
+                </div>
+
+                <button class="carousel-btn prev-btn" aria-label="Anterior">&#10094;</button>
+                <button class="carousel-btn next-btn" aria-label="Próxima">&#10095;</button>
+            </div>
+        </section>
+
+        <section id="qualidade">
+            <h2>Compromisso com Qualidade e Segurança</h2>
+            <p>A Blaymed segue rigorosamente todos os POPs (Procedimentos Operacionais Padrão) exigidos pela Anvisa e pelo Conselho Regional de Biomedicina, garantindo segurança em cada etapa do atendimento.</p>
+            <p>Auditorias internas e externas são realizadas regularmente para assegurar conformidade e melhoria contínua dos processos.</p>
+        </section>
+
+        <section id="contato">
+            <h2>Agende sua Consulta!</h2>
+            <form>
+                <input type="text" placeholder="Seu nome" required>
+                <input type="email" placeholder="Seu e-mail" required>
+                <input type="tel" placeholder="Seu telefone" required>
+                <textarea placeholder="Mensagem ou tratamento desejado"></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+        <section class="localizacao">
+            <h2>Localização e Contato</h2>
+
+            <p>📍 Avenida José Luís da Cunha, nº 280 – Centro, Contagem/MG</p>
+            <p>📞 (31) 3567-4820 | 📧 contato@bladymed.com.br</p>
+
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3751.505637552882!2d-44.082122824031536!3d-19.903086281479265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa694df0bd423cb%3A0x41108be72e6390a4!2sAv.%20Jos%C3%A9%20Lu%C3%ADs%20da%20Cunha%20-%20Alvorada%2C%20Contagem%20-%20MG%2C%2032042-080!5e0!3m2!1sen!2sbr!4v1761519884269!5m2!1sen!2sbr"
+                width="600"
+                height="450"
+                style="border:0;"
+                loading="lazy"
+                allowfullscreen>
+            </iframe>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2025 Bladymed Estética. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+
+        (function () {
+
+            const container = document.querySelector('.carousel-container');
+            if (!container) return;
+
+            const imgs = Array.from(container.querySelectorAll('.carousel-slide img'));
+            const prevBtn = container.querySelector('.prev-btn');
+            const nextBtn = container.querySelector('.next-btn');
+
+            if (!imgs.length) return;
+
+            let index = imgs.findIndex(i => i.classList.contains('active'));
+            if (index === -1) index = 0;
+
+            imgs.forEach((img, i) => {
+
+                img.style.position = 'absolute';
+                img.style.top = '0';
+                img.style.left = '0';
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'contain';
+                img.style.backgroundColor = '#f9d7e2';
+                img.style.transition = 'opacity 600ms ease-in-out';
+                img.style.opacity = (i === index) ? '1' : '0';
+
+                if (i === index) img.classList.add('active');
+                else img.classList.remove('active');
+            });
+
+            let isAnimating = false;
+
+            function crossfadeTo(newIndex) {
+
+                if (isAnimating) return;
+
+                const next = (newIndex + imgs.length) % imgs.length;
+                if (next === index) return;
+
+                isAnimating = true;
+
+                const cur = imgs[index];
+                const nxt = imgs[next];
+
+                nxt.classList.add('active');
+                nxt.style.opacity = '0';
+
+                void nxt.offsetWidth;
+
+                nxt.style.opacity = '1';
+                cur.style.opacity = '0';
+
+                let settled = false;
+
+                function finish() {
+                    if (settled) return;
+                    settled = true;
+                    cur.classList.remove('active');
+                    index = next;
+                    isAnimating = false;
+                    nxt.removeEventListener('transitionend', onEnd);
+                }
+
+                function onEnd(e) {
+                    if (e.propertyName === 'opacity') finish();
+                }
+
+                nxt.addEventListener('transitionend', onEnd);
+
+                setTimeout(finish, 750);
+            }
+
+            nextBtn && nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                crossfadeTo(index + 1);
+            });
+
+            prevBtn && prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                crossfadeTo(index - 1);
+            });
+
+            let timer = setInterval(() => crossfadeTo(index + 1), 4000);
+
+            container.addEventListener('mouseenter', () => clearInterval(timer));
+
+            container.addEventListener('mouseleave', () => {
+                clearInterval(timer);
+                timer = setInterval(() => crossfadeTo(index + 1), 4000);
+            });
+
+        })();
+
+    </script>
+
+</body>
+</html>
